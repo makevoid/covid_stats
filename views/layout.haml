@@ -8,7 +8,6 @@
 
   %body{ class: body_class }
     .container
-
       %nav.navbar{"aria-label" => "main navigation", role: "navigation"}
         .navbar-brand
           %a.navbar-burger.burger{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navbarBasicExample", :role => "button"}
@@ -16,10 +15,10 @@
             -# %span{"aria-hidden" => "true"} Page 1
         #navbarBasicExample.navbar-menu
           .navbar-start
-            %a.navbar-item{ href: "/" }    Home
+            %a.navbar-item{ href: "/" } Home
             -# %a.navbar-item{ href: "/foo" } Page 1
 
-      %section.hero.is-primary
+      %section.hero.is-light
         .hero-body
           .container.hs20
             %h1
