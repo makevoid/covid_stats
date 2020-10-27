@@ -29,18 +29,21 @@
           -#       %a.button.is-light
           -#         Log in
 
-      %section.hero.is-primary.is-medium
+      %section.hero.is-primary
         .hero-body
           .container.hs20
             %h1
-              %a.title{ href: "/" } Hello world
+              %a.title{ href: "/" } Covid Stats
             %h2.subtitle
-              This is an awesome app!
+              Data Map
 
       %section.content
         .box
           = yield
 
+    %script{ type: "text/javascript" }
+      window.data_7d_deaths = #{STATS.inspect}
+    %script{:src => "https://www.gstatic.com/charts/loader.js", :type => "text/javascript"}
     %script{ src: "/js/vendor/handlebars.js", type: "text/javascript" }
     %script{ src: "/js/vendor/underscore.js", type: "text/javascript" }
     %script{ src: "/js/app.js", type: "text/javascript" }

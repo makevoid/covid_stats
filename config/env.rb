@@ -1,4 +1,5 @@
 require 'bundler'
+require 'json'
 
 Encoding.default_internal = Encoding::UTF_8
 Encoding.default_external = Encoding::UTF_8
@@ -13,7 +14,5 @@ APP_ENV = ENV["RACK_ENV"] || "development"
 
 Oj.default_options = { mode: :compat }
 
-# require your libs/models here
-#
-# require_relative '../lib/file'
-# require_relative '../models/file'
+
+require "#{PATH}/lib/stats"
