@@ -1,8 +1,7 @@
-FROM ruby:2.7.1-alpine3.11
+FROM ruby:2.7.2-alpine3.12
 
 RUN apk --no-cache add make gcc libc-dev \
     rm -rf /var/cache/apk/*
-
 
 WORKDIR /app
 
