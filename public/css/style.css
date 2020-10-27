@@ -9,3 +9,5 @@
 .hs30 { margin-left: 30px; }
 .hs40 { margin-left: 40px; }
 .hs50 { margin-left: 50px; }
+
+svg > g > g:last-child { pointer-events: none }

@@ -11,23 +11,13 @@
 
       %nav.navbar{"aria-label" => "main navigation", role: "navigation"}
         .navbar-brand
-          %a.navbar-item{:href => "https://bulma.io"}
-            %h1
-              %a.subtitle.is-size-4{ href: "/" } App
           %a.navbar-burger.burger{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navbarBasicExample", :role => "button"}
             %span{"aria-hidden" => "true"} Home
-            %span{"aria-hidden" => "true"} Page 1
+            -# %span{"aria-hidden" => "true"} Page 1
         #navbarBasicExample.navbar-menu
           .navbar-start
-            %a.navbar-item{ href: "/" } Home
-            %a.navbar-item{ href: "/foo" } Page 1
-          -# .navbar-end
-          -#   .navbar-item
-          -#     .buttons
-          -#       %a.button.is-primary
-          -#         %strong Sign up
-          -#       %a.button.is-light
-          -#         Log in
+            %a.navbar-item{ href: "/" }    Home
+            -# %a.navbar-item{ href: "/foo" } Page 1
 
       %section.hero.is-primary
         .hero-body
@@ -44,6 +34,6 @@
     %script{ type: "text/javascript" }
       window.data_7d_deaths = #{STATS.inspect}
     %script{:src => "https://www.gstatic.com/charts/loader.js", :type => "text/javascript"}
-    %script{ src: "/js/vendor/handlebars.js", type: "text/javascript" }
-    %script{ src: "/js/vendor/underscore.js", type: "text/javascript" }
     %script{ src: "/js/app.js", type: "text/javascript" }
+    -# %script{ src: "/js/vendor/handlebars.js", type: "text/javascript" }
+    -# %script{ src: "/js/vendor/underscore.js", type: "text/javascript" }
