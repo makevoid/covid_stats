@@ -14,6 +14,7 @@ APP_ENV = ENV["RACK_ENV"] || "development"
 
 Oj.default_options = { mode: :compat }
 
-GIT_LAST_UPDATE = %x{git log -1 --format=%cd}.strip
+# GIT_LAST_UPDATE = %x{git log -1 --format=%cd}.strip
+DATA_LAST_UPDATE = %x{stat -c '%y' #{path}/data/europe.json}.strip
 
 require "#{PATH}/lib/stats"
