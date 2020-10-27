@@ -1,22 +1,26 @@
-# App
+# Covid Stats Maps
 
-simple Roda + Haml boilerplate app to quick-start your roda, view based apps
+Simple covid stats maps
 
-includes Bulma CSS ( http://bulma.io )
+I know deaths are not a very "nice" metric to watch and of course it's sad, but I think it's critical to understand the real current virality and it's missing in a lot of infographics out there. This is why I decided to create this simple open source project showing a map with the number of deaths per country in the last x days. Hope this helps.
 
-
-### Install
-
-    bundle
-
-
-### Run
-
-
-    bundle exec rackup -p 3000
-
-
-then visit: <http://localhost:3000>
-
+http://covid-stats.mkv.run/
 
 @makevoid
+
+---
+
+Tools used:
+
+- ruby
+- haml
+- roda
+- vanilla JS
+- google charts 
+- covid world data from https://ourworldindata.org 
+
+
+---
+
+Twitter: https://twitter.com/makevoid
+Discord: https://discord.gg/wPpdga
