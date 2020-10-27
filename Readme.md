@@ -1,8 +1,10 @@
 # Covid Stats Maps
 
-![](https://github.com/makevoid/covid_stats/blob/master/tmp/screenshots/v0.png?raw=true)
-
 http://covid-stats.mkv.run/
+
+[ ![](https://github.com/makevoid/covid_stats/blob/master/tmp/screenshots/v0.png?raw=true) ](http://covid-stats.mkv.run)
+
+
 
 Simple covid stats maps
 
