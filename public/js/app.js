@@ -19,7 +19,7 @@ const drawRegionsMap = () => {
 
 window.addEventListener('DOMContentLoaded', (event) => {
   google.charts.load('current', {
-    'packages':['geochart'],
+    'packages': ['geochart'],
     'mapsApiKey': 'AIzaSyBmkSJKJhWnSJNVHS33kocZy6YC8pVJJCk'
   })
   google.charts.setOnLoadCallback(drawRegionsMap)

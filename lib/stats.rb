@@ -19,9 +19,13 @@ class Stats
     @@data || load_data
   end
 
+  def self.header
+    [ ['Country', '# of deaths - 7 days'] ]
+  end
+
   def self.all
     data = self.data
-    data.insert 0, ['Country', '# of deaths - 7 days']
+    header + data
   end
 
 end
