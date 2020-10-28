@@ -3,8 +3,21 @@ class Stats
   DATA_DEATHS_7D = "#{PATH}/data/europe.json"
 
   @@data = nil
+  @@data_timestamp = nil
 
   def initialize
+  end
+
+  def self.data_timestamp=(new_timestamp)
+    @@data_timestamp = new_timestamp
+  end
+
+  def self.get_data_timestamp
+    %x{stat -c '%y' #{DATA_DEATHS_7D}}.strip
+  end
+
+  def self.data_timestamp
+    @@data_timestamp ||= get_data_timestamp
   end
 
   def self.data=(new_data)
@@ -16,7 +29,7 @@ class Stats
   end
 
   def self.data
-    @@data || load_data
+    @@data ||= load_data
   end
 
   def self.header

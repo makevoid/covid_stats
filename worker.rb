@@ -27,6 +27,7 @@ LoadNewData = -> {
   Tasks::StatsDL.()
   Tasks::Transform.()
   Stats.data = Stats.load_data
+  Stats.data_timestamp = Stats.get_data_timestamp
 }
 
 OneHour = 3600 # seconds
