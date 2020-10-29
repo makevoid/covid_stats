@@ -6,6 +6,8 @@ module Tasks
   Transforms = {}
 
   Filters[:filter_europe] = -> (region, details) { details["continent"] == "Europe" }
+  Filters[:filter_usa] = -> (region, details) { details["continent"] == "North America" }
+  Filters[:filter_aus] = -> (region, details) { details["continent"] == "Australia" }
 
   Filters[:filter_russia] = -> (region, details) {
     country = details["location"]
@@ -20,25 +22,52 @@ module Tasks
     [country, stat]
   }
 
-  TF_INPUT_DATA  = "data/data.json"
-  TF_OUTPUT      = "data/europe.json"
+  PATH = File.expand_path "../../", __FILE__
+  TF_INPUT_DATA  = "#{PATH}/data/data.json"
 
-  Transform = -> {
-    path = File.expand_path "../../", __FILE__
 
+  TransformEurope = -> {
+    outputFile = "#{PATH}/data/europe.json"
     data = File.read TF_INPUT_DATA
     data = JSON.parse data
 
     data.select! &Filters[:filter_europe]
-    data.select! &Filters[:filter_russia] # unfortunately russia has data of the whole continent, see Russia in Asia map (soon)
-    data = data.map &Transforms[:transform_data]
 
-    File.open(TF_OUTPUT, "w"){ |f| f.write data.to_json }
+    data = data.map &Transforms[:transform_data]
+    File.open(outputFile, "w"){ |f| f.write data.to_json }
+  }
+
+  TransformAus = -> {
+    outputFile = "#{PATH}/data/australia.json"
+    data = File.read TF_INPUT_DATA
+    data = JSON.parse data
+
+    data.select! &Filters[:filter_aus]
+
+    data = data.map &Transforms[:transform_data]
+    File.open(outputFile, "w"){ |f| f.write data.to_json }
+  }
+
+  TransformUsa = -> {
+    outputFile = "#{PATH}/data/usa.json"
+    data = File.read TF_INPUT_DATA
+    data = JSON.parse data
+
+    data.select! &Filters[:filter_usa]
+
+    data = data.map &Transforms[:transform_data]
+    File.open(outputFile, "w"){ |f| f.write data.to_json }
+  }
+
+  AllTransforms = -> {
+    TransformEurope.()
+    TransformAus.()
+    TransformUsa.()
   }
 
 end
 
 if __FILE__ == $0
   require 'json'
-  Tasks::Transform.()
+  Tasks::AllTransforms.()
 end

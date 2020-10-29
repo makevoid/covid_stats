@@ -9,7 +9,7 @@ module Tasks
     puts "- downloading the data..."
     puts system "curl #{API_ENDPOINT}/owid-covid-data.json > #{path}/tmp/owid-covid-data.json "
     puts "\n- updating the data file..."
-    puts system "mv #{path}/tmp/owid-covid-data.json #{path}/data/data.json"
+    puts system "cp #{path}/tmp/owid-covid-data.json #{path}/data/data.json"
   }
 
 end

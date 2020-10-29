@@ -30,6 +30,11 @@
         .box
           = yield
 
+          %p
+            Data from
+            %a{ href: "https://ourworldindata.org" } ourworldindata.org
+            \- last update #{Stats.data_timestamp[0..-14]}
+
     %script{ type: "text/javascript" }
       window.data_7d_deaths = #{Stats.all.inspect}
     %script{:src => "https://www.gstatic.com/charts/loader.js", :type => "text/javascript"}
