@@ -20,10 +20,10 @@ class App < Roda
       view 'index'
     }
 
-    r.on("foo") {
+    r.on("maps") {
       r.is {
         r.get {
-          view 'page_one'
+          view 'maps'
         }
       }
     }

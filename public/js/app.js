@@ -10,7 +10,7 @@ const drawRegionsMap = () => {
     region: '150',
     colorAxis: { colors: ["orange"] },
   }
-  const chartElem = document.querySelector('.regions_div')
+  const chartElem = document.querySelector('.regions_chart')
   const chart = new google.visualization.GeoChart(chartElem)
 
   chart.draw(data, options)
