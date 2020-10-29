@@ -6,8 +6,9 @@ module Tasks
   Transforms = {}
 
   Filters[:filter_europe] = -> (region, details) { details["continent"] == "Europe" }
-  Filters[:filter_usa] = -> (region, details) { details["continent"] == "North America" }
-  Filters[:filter_aus] = -> (region, details) { details["continent"] == "Australia" }
+  Filters[:filter_usa]    = -> (region, details) { details["continent"] == "North America" }
+  Filters[:filter_aus]    = -> (region, details) { details["continent"] == "Oceania" }
+  Filters[:filter_asia]   = -> (region, details) { details["continent"] == "Asia" }
 
   Filters[:filter_russia] = -> (region, details) {
     country = details["location"]
@@ -18,7 +19,7 @@ module Tasks
     country = details["location"]
     # stat = details["data"].fetch(-1).fetch "new_deaths" # yesterday
     stat = details["data"][-8..-1]
-    stat = stat.sum{ |data| data["new_deaths"] } # 7 days
+    stat = stat.sum{ |data| data["new_deaths"] || 0 } # 7 days
     [country, stat]
   }
 
@@ -59,10 +60,23 @@ module Tasks
     File.open(outputFile, "w"){ |f| f.write data.to_json }
   }
 
+  TransformAsia = -> {
+    outputFile = "#{PATH}/data/asia.json"
+    data = File.read TF_INPUT_DATA
+    data = JSON.parse data
+
+    data.select! &Filters[:filter_asia]
+
+    data = data.map &Transforms[:transform_data]
+    File.open(outputFile, "w"){ |f| f.write data.to_json }
+  }
+
+
   AllTransforms = -> {
     TransformEurope.()
     TransformAus.()
     TransformUsa.()
+    TransformAsia.()
   }
 
 end

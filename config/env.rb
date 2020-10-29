@@ -12,6 +12,8 @@ PATH = path
 
 APP_ENV = ENV["RACK_ENV"] || "development"
 
+NODL = ENV["NODL"] == "1" # no maps dl
+
 Oj.default_options = { mode: :compat }
 
 API_ENDPOINT = "https://covid.ourworldindata.org/data"

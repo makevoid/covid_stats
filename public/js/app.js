@@ -16,7 +16,7 @@ const chartOptions = {
 const regions = {
   all: '001',
   europe: '150',
-  usa: '003',
+  usa: '021',
   asia: '142',
   south_america: '419', // latin america + caribbean
   australia: '053',
@@ -41,7 +41,7 @@ const pageLoaded = (event) => {
   chartsConfig = Object.assign(customConfig, chartsConfig)
   google.charts.load('current', chartsConfig)
   // const mapRegion = regions.europe
-  const mapRegion = regions.australia
+  const mapRegion = regions.asia
   google.charts.setOnLoadCallback(drawMap(mapRegion))
 }
 

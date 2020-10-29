@@ -2,7 +2,9 @@ class Stats
 
   DATA_DEATHS_7D_EUROPE = "#{PATH}/data/europe.json"
   DATA_DEATHS_7D_AUS    = "#{PATH}/data/australia.json"
-  DATA_DEATHS_7D = DATA_DEATHS_7D_AUS
+  DATA_DEATHS_7D_USA    = "#{PATH}/data/usa.json"
+  DATA_DEATHS_7D_ASIA    = "#{PATH}/data/asia.json"
+  DATA_DEATHS_7D = DATA_DEATHS_7D_ASIA
 
   @@data = nil
   @@data_timestamp = nil
