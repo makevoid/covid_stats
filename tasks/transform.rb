@@ -19,7 +19,11 @@ module Tasks
     country = details["location"]
     # stat = details["data"].fetch(-1).fetch "new_deaths" # yesterday
     stat = details["data"][-8..-1]
-    stat = stat.sum{ |data| data["new_deaths"] || 0 } # 7 days
+    stat = if stat
+      stat.sum{ |data| data["new_deaths"] || 0 } # 7 days
+    else
+      0
+    end
     [country, stat]
   }
 
