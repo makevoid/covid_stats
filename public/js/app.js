@@ -13,19 +13,21 @@ const chartOptions = {
   colorAxis: { colors: ["orange"] },
 }
 
+// note: see https://developers.google.com/chart/interactive/docs/gallery/geochart#continent-hierarchy-and-codes
 const regions = {
   all: '001',
   europe: '150',
   usa: '021',
   asia: '142',
-  south_america: '419', // latin america + caribbean
+  south_america: '005', 
   australia: '053',
 }
 
-const drawMap = (mapRegion) =>
+const drawMap = (regionName) =>
   () => {
-    const chartSelector = '.regions_chart'
-    const dataSource = window.data_7d_deaths
+    const mapRegion = regions[regionName]
+    const chartSelector = '.region_chart'
+    const dataSource = window[`data_7d_deaths_${regionName}`]
     const data = google.visualization.arrayToDataTable(dataSource)
     const chartElem = document.querySelector(chartSelector)
     const chart = new google.visualization.GeoChart(chartElem)
@@ -41,8 +43,9 @@ const pageLoaded = (event) => {
   chartsConfig = Object.assign(customConfig, chartsConfig)
   google.charts.load('current', chartsConfig)
   // const mapRegion = regions.europe
-  const mapRegion = regions.asia
-  google.charts.setOnLoadCallback(drawMap(mapRegion))
+  const locationPath = window.location.pathname.split("/")
+  const regionName = locationPath[2] || "europe"
+  google.charts.setOnLoadCallback(drawMap(regionName))
 }
 
 window.addEventListener('DOMContentLoaded', pageLoaded)

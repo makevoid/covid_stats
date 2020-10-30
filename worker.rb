@@ -23,11 +23,15 @@ NewDataAvailable = -> {
   end
 }
 
-LoadNewData = -> {
-  Tasks::StatsDL.() unless NODL
+TransformAndUpdate = -> {
   Tasks::AllTransforms.()
   Stats.data = Stats.load_data
   Stats.data_timestamp = Stats.get_data_timestamp
+}
+
+LoadNewData = -> {
+  Tasks::StatsDL.() unless NODL
+  TransformAndUpdate.()
 }
 
 OneHour = 3600 # seconds
@@ -38,6 +42,7 @@ Worker = -> {
   Thread.new do
     sleep 2
     loop do
+      TransformAndUpdate.()
       puts "Worker is running..."
       LoadNewData.() if NewDataAvailable.()
       sleep OneHour

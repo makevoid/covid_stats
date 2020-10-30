@@ -7,4 +7,5 @@ services:
     image: makevoid/covid_stats
     ports:
       - 3000:3000
-    environment: []
+    environment:
+      - PORT=3000

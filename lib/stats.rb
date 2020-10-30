@@ -1,12 +1,21 @@
 class Stats
 
-  DATA_DEATHS_7D_EUROPE = "#{PATH}/data/europe.json"
-  DATA_DEATHS_7D_AUS    = "#{PATH}/data/australia.json"
-  DATA_DEATHS_7D_USA    = "#{PATH}/data/usa.json"
-  DATA_DEATHS_7D_ASIA    = "#{PATH}/data/asia.json"
-  DATA_DEATHS_7D = DATA_DEATHS_7D_ASIA
+  REGIONS = %i(
+    europe
+    australia
+    usa
+    asia
+    south_america
+  )
 
-  @@data = nil
+  DATA_DEATHS_7D           = "#{PATH}/data/data.json"
+  DATA_DEATHS_7D_EUROPE    = "#{PATH}/data/europe.json"
+  DATA_DEATHS_7D_AUS       = "#{PATH}/data/australia.json"
+  DATA_DEATHS_7D_USA       = "#{PATH}/data/usa.json"
+  DATA_DEATHS_7D_ASIA      = "#{PATH}/data/asia.json"
+  DATA_DEATHS_7D_S_AMERICA = "#{PATH}/data/south_america.json"
+
+  @@data = {}
   @@data_timestamp = nil
 
   def initialize
@@ -29,7 +38,12 @@ class Stats
   end
 
   def self.load_data
-    JSON.parse File.read DATA_DEATHS_7D
+    data = {}
+    REGIONS.each do |region|
+      region_data = JSON.parse File.read "#{PATH}/data/#{region}.json"
+      data[region] = header + region_data
+    end
+    data
   end
 
   def self.data
@@ -41,8 +55,7 @@ class Stats
   end
 
   def self.all
-    data = self.data
-    header + data
+    data
   end
 
 end

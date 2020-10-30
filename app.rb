@@ -26,6 +26,10 @@ class App < Roda
           view 'maps'
         }
       }
+
+      r.is(String) { |region|
+        view 'map', locals: { region: region }
+      }
     }
 
     r.public  # if APP_ENV != "production"

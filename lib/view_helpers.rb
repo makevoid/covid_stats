@@ -3,7 +3,7 @@ module ViewHelpers
   #   Inflecto.humanize(Inflecto.underscore(string.to_s)).capitalize
   # end
 
-  def hello
-    "hello helper"
+  def titleize(string)
+    string.to_s.capitalize.gsub /_/, " "
   end
 end

@@ -10,4 +10,7 @@ RUN bundle install
 
 ADD . /app
 
+EXPOSE 80
+ENV PORT=80
+
 CMD rake
