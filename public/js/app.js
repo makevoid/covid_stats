@@ -17,9 +17,9 @@ const chartOptions = {
 const regions = {
   all: '001',
   europe: '150',
-  usa: '021',
+  north_america: '021',
   asia: '142',
-  south_america: '005', 
+  south_america: '005',
   australia: '053',
 }
 

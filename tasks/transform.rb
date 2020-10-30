@@ -6,9 +6,9 @@ module Tasks
   Transforms = {}
 
   Filters[:filter_europe] = -> (region, details) { details["continent"] == "Europe" }
-  Filters[:filter_usa]    = -> (region, details) { details["continent"] == "North America" }
   Filters[:filter_aus]    = -> (region, details) { details["continent"] == "Oceania" }
   Filters[:filter_asia]   = -> (region, details) { details["continent"] == "Asia" }
+  Filters[:filter_north_america] = -> (region, details) { details["continent"] == "North America" }
   Filters[:filter_south_america] = -> (region, details) { details["continent"] == "South America" }
 
   Filters[:filter_russia_out] = -> (region, details) {
@@ -55,12 +55,12 @@ module Tasks
     File.open(outputFile, "w"){ |f| f.write data.to_json }
   }
 
-  TransformUsa = -> {
-    outputFile = "#{PATH}/data/usa.json"
+  TransformNorthAmerica = -> {
+    outputFile = "#{PATH}/data/north_america.json"
     data = File.read TF_INPUT_DATA
     data = JSON.parse data
 
-    data.select! &Filters[:filter_usa]
+    data.select! &Filters[:filter_north_america]
 
     data = data.map &Transforms[:transform_data]
     File.open(outputFile, "w"){ |f| f.write data.to_json }
@@ -91,7 +91,7 @@ module Tasks
   AllTransforms = -> {
     TransformEurope.()
     TransformAus.()
-    TransformUsa.()
+    TransformNorthAmerica.()
     TransformAsia.()
     TransformSouthAmerica.()
   }

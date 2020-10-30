@@ -197,7 +197,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _handlebarsNoConflict2 = _interopRequireDefault(_handlebarsNoConflict);
 
-	// For compatibility and usage outside of module systems, make the Handlebars object a namespace
+	// For compatibility and north_americage outside of module systems, make the Handlebars object a namespace
 	function create() {
 	  var hb = new base.HandlebarsEnvironment();
 

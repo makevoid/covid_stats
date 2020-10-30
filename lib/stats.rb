@@ -3,7 +3,7 @@ class Stats
   REGIONS = %i(
     europe
     australia
-    usa
+    north_america
     asia
     south_america
   )
@@ -11,7 +11,7 @@ class Stats
   DATA_DEATHS_7D           = "#{PATH}/data/data.json"
   DATA_DEATHS_7D_EUROPE    = "#{PATH}/data/europe.json"
   DATA_DEATHS_7D_AUS       = "#{PATH}/data/australia.json"
-  DATA_DEATHS_7D_USA       = "#{PATH}/data/usa.json"
+  DATA_DEATHS_7D_N_AMERICA = "#{PATH}/data/north_america.json"
   DATA_DEATHS_7D_ASIA      = "#{PATH}/data/asia.json"
   DATA_DEATHS_7D_S_AMERICA = "#{PATH}/data/south_america.json"
 
