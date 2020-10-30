@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-    image: makevoid/app
+    image: makevoid/covid_stats
     ports:
       - 3000:3000
     environment: []
