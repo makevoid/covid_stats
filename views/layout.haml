@@ -17,18 +17,20 @@
       %nav.navbar{"aria-label" => "main navigation", role: "navigation"}
         .navbar-brand
           %a.navbar-burger.burger{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navbarBasicExample", :role => "button"}
-            %span{"aria-hidden" => "true"} Home
+            %span{"aria-hidden" => "true"} Europe
+            %span{"aria-hidden" => "true"} Maps
         #navbarBasicExample.navbar-menu
           .navbar-start
-            %a.navbar-item{ href: "/" } Home
+            %a.navbar-item{ href: "/" } Europe
+            %a.navbar-item{ href: "/maps" } Maps
 
       %section.hero.is-light
         .hero-body
           .container.hs20
-            %h1
+            %h1.title
               %a.title{ href: "/" } Covid Stats
-            %h2.subtitle
-              Data Map
+            %h2.subtitle.is-6
+              infographics - confirmed_deaths_7d - data from ourworldindata.org
 
       %section.content
         .box
