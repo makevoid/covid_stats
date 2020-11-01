@@ -39,7 +39,8 @@
           %p
             Data from
             %a{ href: "https://ourworldindata.org" } ourworldindata.org
-            \- last update #{Stats.data_timestamp[0..-14]}
+            \- last update #{Stats.data_timestamp[0..-14]} -
+            %a{ href: "https://github.com/makevoid/covid_stats" } open source
 
     %script{ type: "text/javascript" }
       window.data_7d_deaths_europe        = #{Stats.all[:europe]}
